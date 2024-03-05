@@ -15,8 +15,8 @@ const userSchema = new Schema({
         required: true
     },
     posts: [{
-        type: Schema.Types.ObjectId,
-        ref: 'post'
+       type:mongoose.Schema.Types.ObjectId,
+       ref:'Post'
     }],
     dp: String, // Assuming dp is for profile picture
     email: {

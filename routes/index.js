@@ -16,29 +16,29 @@ router.get('/Createuser',async function(req,res){
         email:"raushanarya8@gmail.com",
         fullName: "raushan kumar"
          });
+         res.send(createduser)
      
 });
-router.get('/allusers',async function(req,res){
-    let user = await userModel.findone({
-      _id:"65e5e474fb24ea3be1ff39de"
-
-    })
+  router.get('/allusers', async function(req,res){
+   let user =await userModel.findOne({_id:"65e6ba726d6d089b7b628ceb"})
+    .populate('posts');
     res.send(user)
-})
+  })
 
 router.get('/createpost',async function(req,res){
-  let createpost = await postModel.create({
-    postText: "hello everyone",
-    // user:"65e5e474fb24ea3be1ff39de"
+  let createdpost = await postModel.create({
+    postText: "hello everyone! kaise ho",
+    user:"65e6ba726d6d089b7b628ceb"
 
   })
-  // let user = await userModel.findone({_id:"65e5e474fb24ea3be1ff39de"});
-  // user.posts.push(createpost._id)
+     
+  let user = await userModel.findOne({_id:"65e6ba726d6d089b7b628ceb"});
+  user.posts.push(createdpost._id)
  
-  // await user.save();
-  // res.send("done")
+  await user.save();
+  res.send("done")
   
-res.s
+ 
 
 })
 
